@@ -2,15 +2,10 @@ const http = require('http');
 const url = require('url');
 
 const server = http.createServer((req, res) => {
-	const path = url.parse(req.url, true).pathname;
+	const path = req.url;
 	const method = req.method;
 	
-	if (path == "/" && method === 'GET') {
-		res.statusCode = 200;
-		res.setHeader('Content-Type', 'text/plain');
-		res.end('Hello World');
-	} else if (path == "/questions" && method === 'GET') {
-		
+	if (path == "/questions" && method === 'GET') {
 		const questions = {
 			1: "What is your favorite color?",
 			2: "What is your favorite food?",
@@ -21,7 +16,6 @@ const server = http.createServer((req, res) => {
 		res.setHeader('content-Type', 'application/json');
 		res.end(JSON.stringify(questions));
 	} else if (path == "/answers" && method === 'GET') {
-
 		const answers = {
 			1: "Blue",
 			2: "Sushi",
