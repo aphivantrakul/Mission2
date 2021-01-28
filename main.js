@@ -1,6 +1,7 @@
 // Modules to control application life and create native browser window
 const {app, BrowserWindow, ipcMain, net} = require('electron');
 const path = require('path');
+const QnAService = require("./QnAService");
 
 let questions = {};
 let mainWindow;
